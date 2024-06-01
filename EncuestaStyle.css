@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.contenedor {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+}
+
+.oculto {
+    display: none;
+}
+
+.imagen-perro {
+    width: 150px; 
+    height: 150px; 
+    object-fit: cover; /* Ajuste de la imagen */
+    border-radius: 5px; /* Borde redondeado */
+    padding-right: 5px; 
+    padding-bottom: 5px;
+}
+
+
+
+.perro-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 150px; /* Ancho máximo para cada tarjeta */
+    padding: 10px;
+    border: 1px solid #ccc; /* Opcional: agregar un borde */
+    border-radius: 10px; /* Opcional: bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Opcional: sombra para el efecto de tarjeta */
+    background-color: #fff; /* Fondo blanco para las tarjetas */
+}
+
+
+
+
+
