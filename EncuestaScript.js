@@ -212,7 +212,8 @@ function mostrarResultado() {
     /*obtenerRango(puntajeTotal);
     console.log(obtenerRango(puntajeTotal));
     */
-    const rango = obtenerRango(puntajeTotal);
+    const rangoArray = obtenerRango(puntajeTotal);
+    const rango =rangoArray[0];
     rangoElement.innerHTML = '';
 
     rango.forEach(perro => {
@@ -238,7 +239,8 @@ botonCompatible.addEventListener('click',function(){
 })
 function manejoContenedor(){
     const $contenedor = document.querySelector('#rowPerros');
-    let rangoPerros =  obtenerRango2(puntajeTotal);
+    const rangoArray = obtenerRango(puntajeTotal);
+    let rangoPerros =  rangoArray[1];
     console.log(rangoPerros);
     rangoPerros.forEach(perros=>{
         const card=  crearCard(perros);
@@ -282,10 +284,12 @@ function crearCard(perroObj){
     return card;
 }
 function mandarPaginaAdoptar(){
-    const perroElegido=document.querySelector('.cartaPerro')
-    perroElegido.addEventListener('click',function(){
-      abrirFormulario();
-    })
+    const perroElegido = document.querySelectorAll('.cartaPerro');
+    perroElegido.forEach(perroElegidoClic => {
+        perroElegidoClic.addEventListener('click', function() {
+            abrirFormulario();
+        });
+    });
 }
 function abrirFormulario() {
     window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLSd8TwbGpfr58wXSMebmt9V-KAn3w5tNZrS2RUTkpu-krPeEzA/viewform?pli=1'; 
@@ -296,83 +300,42 @@ function abrirFormulario() {
 function obtenerRango(ptotal){
     
     if(ptotal>=15 && ptotal<=18){
-        return rango1;
+        return [rango1, prango1];
     }
-    if(ptotal>=19 && ptotal<=25){
-        return rango2;
+    else if(ptotal>=19 && ptotal<=25){
+        return [rango2, prango2];
     }
-    if(ptotal>=26 && ptotal<=30){
-        return rango3;
+    else if(ptotal>=26 && ptotal<=30){
+        return [rango3, prango3];
     }
-    if(ptotal>=31 && ptotal<=34){
-        return rango4;
+    else if(ptotal>=31 && ptotal<=34){
+        return [rango4, prango4];
     }
-    if(ptotal>=35 && ptotal<=40){
-        return rango5;
+    else if(ptotal>=35 && ptotal<=40){
+        return [rango5, prango5];
     }
-    if(ptotal>=41 && ptotal<=45){
-        return rango6;
+    else if(ptotal>=41 && ptotal<=45){
+        return [rango6, prango6];
     }
-    if(ptotal>=46 && ptotal<=50){
-        return rango7;
+    else if(ptotal>=46 && ptotal<=50){
+        return [rango7, prango7];
     }
-    if(ptotal>=51 && ptotal<=55){
-        return rango8;
+    else if(ptotal>=51 && ptotal<=55){
+        return [rango8, prango8];
     }
-    if(ptotal>=56 && ptotal<=60){
-        return rango9;
+    else if(ptotal>=56 && ptotal<=60){
+        return [rango9, prango9];
     }
-    if(ptotal>=61 && ptotal<=65){
-        return rango10;
+    else if(ptotal>=61 && ptotal<=65){
+        return [rango10, prango10];
     }
-    if(ptotal>=66 && ptotal<=70){
-        return rango11;
+    else if(ptotal>=66 && ptotal<=70){
+        return [rango11, prango11];
     }
-    if(ptotal>=71 && ptotal<=75){
-        return rango12;
+    else if(ptotal>=71 && ptotal<=75){
+        return [rango12, prango12];
     }
-    return[];
-
-}
-function obtenerRango2(ptotal){
-    
-    if(ptotal>=15 && ptotal<=18){
-        return prango1;
-    }
-    if(ptotal>=19 && ptotal<=25){
-        return prango2;
-    }
-    if(ptotal>=26 && ptotal<=30){
-        return prango3;
-    }
-    if(ptotal>=31 && ptotal<=34){
-        return prango4;
-    }
-    if(ptotal>=35 && ptotal<=40){
-        return prango5;
-    }
-    if(ptotal>=41 && ptotal<=45){
-        return prango6;
-    }
-    if(ptotal>=46 && ptotal<=50){
-        return prango7;
-    }
-    if(ptotal>=51 && ptotal<=55){
-        return prango8;
-    }
-    if(ptotal>=56 && ptotal<=60){
-        return prango9;
-    }
-    if(ptotal>=61 && ptotal<=65){
-        return prango10;
-    }
-    if(ptotal>=66 && ptotal<=70){
-        return prango11;
-    }
-    if(ptotal>=71 && ptotal<=75){
-        return prango12;
-    }
-    return[];
+    return [];
 
 }
 
