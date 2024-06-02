@@ -194,6 +194,7 @@ function mostrarPregunta() {
 function seleccionarRespuesta(puntaje) {
     puntajeTotal += puntaje;
     indicePreguntaActual++;
+    console.log(puntajeTotal);
     mostrarPregunta();
 }
 
@@ -216,14 +217,78 @@ function mostrarResultado() {
 
     rango.forEach(perro => {
         const perroDiv = document.createElement('div');
-        let imagenesHtml = ''
-        perro.imgs.forEach(img => {
-            imagenesHtml += `<img src="${img}" alt="${perro.nombre}" class="imagen-perro">`;
-        });
-        perroDiv.innerHTML = `${imagenesHtml}<h3>${perro.nombre}</h3><p>${perro.descripcion}</p>`;
+        perroDiv.classList.add('divRazaCompatible');
+        perroDiv.innerHTML = `<img src="${perro.imgs}" class="imagen-perro" alt="${perro.nombre}"><h3>${perro.nombre}</h3><p>${perro.descripcion}</p>`;
         rangoElement.appendChild(perroDiv);
 
     });
+}
+const botonCompatible = document.querySelector('#botonMostrar');
+function ocultarRazasCompatibles(){
+    document.querySelector('.contenedor').classList.add('oculto')
+}
+function mostrarPerrosCompatibles(){
+    document.querySelector('#perrosCompatibles').classList.remove('oculto')
+}
+botonCompatible.addEventListener('click',function(){
+    ocultarRazasCompatibles();
+    mostrarPerrosCompatibles();
+    manejoContenedor();
+    mandarPaginaAdoptar();
+})
+function manejoContenedor(){
+    const $contenedor = document.querySelector('#rowPerros');
+    let rangoPerros =  obtenerRango2(puntajeTotal);
+    console.log(rangoPerros);
+    rangoPerros.forEach(perros=>{
+        const card=  crearCard(perros);
+        $contenedor.appendChild(card);
+    })
+
+}
+function crearCard(perroObj){
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.classList.add('cartaPerro');
+    card.style.width = '18rem';
+    const img = document.createElement('img');
+    img.src = perroObj.src;
+    img.className = 'card-img-top';
+    img.alt = perroObj.src;
+    const cardBody = document.createElement('div');
+    cardBody.className = 'card-body';
+    const cardTitle = document.createElement('h5');
+    cardTitle.classList.add('card-title');
+    cardTitle.classList.add('nombrePerro');
+    cardTitle.textContent = perroObj.nombre;
+    const cardText1 = document.createElement('p');
+    cardText1.classList.add('card-text');
+    cardText1.classList.add('sexoPerro');
+    cardText1.textContent = perroObj.sexo;
+    const cardText2 = document.createElement('p');
+    cardText2.classList.add('card-text');
+    cardText1.classList.add('tamanoPerro');
+    cardText2.textContent = perroObj.tamano;
+    const cardText3 = document.createElement('p');
+    cardText3.classList.add('card-text');
+    cardText3.classList.add('edadPerro');
+    cardText3.textContent = perroObj.edad;
+    cardBody.appendChild(cardTitle);
+    cardBody.appendChild(cardText1);
+    cardBody.appendChild(cardText2);
+    cardBody.appendChild(cardText3);
+    card.appendChild(img);
+    card.appendChild(cardBody);
+    return card;
+}
+function mandarPaginaAdoptar(){
+    const perroElegido=document.querySelector('.cartaPerro')
+    perroElegido.addEventListener('click',function(){
+      abrirFormulario();
+    })
+}
+function abrirFormulario() {
+    window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLSd8TwbGpfr58wXSMebmt9V-KAn3w5tNZrS2RUTkpu-krPeEzA/viewform?pli=1'; 
 }
 
 //Siguiente parte
@@ -269,186 +334,414 @@ function obtenerRango(ptotal){
     return[];
 
 }
+function obtenerRango2(ptotal){
+    
+    if(ptotal>=15 && ptotal<=18){
+        return prango1;
+    }
+    if(ptotal>=19 && ptotal<=25){
+        return prango2;
+    }
+    if(ptotal>=26 && ptotal<=30){
+        return prango3;
+    }
+    if(ptotal>=31 && ptotal<=34){
+        return prango4;
+    }
+    if(ptotal>=35 && ptotal<=40){
+        return prango5;
+    }
+    if(ptotal>=41 && ptotal<=45){
+        return prango6;
+    }
+    if(ptotal>=46 && ptotal<=50){
+        return prango7;
+    }
+    if(ptotal>=51 && ptotal<=55){
+        return prango8;
+    }
+    if(ptotal>=56 && ptotal<=60){
+        return prango9;
+    }
+    if(ptotal>=61 && ptotal<=65){
+        return prango10;
+    }
+    if(ptotal>=66 && ptotal<=70){
+        return prango11;
+    }
+    if(ptotal>=71 && ptotal<=75){
+        return prango12;
+    }
+    return[];
+
+}
 
 let nombre,descripcion,img;
 
 const BulldogFrances={
-    imgs : ["/img/bulldogfranc.jpg"],
+    imgs : "img/1.jpg",
     nombre : "Bull Dog Frances",
     descripcion : "Tranquilo, cariñoso y adecuado para espacios pequeños.",
 };
 
 const PastorDeKarst={
-    imgs : ["/img/grande/2.jpg"],
+    imgs : "img/2.jpg",
     nombre : "Pastor de Karst",
     descripcion : "Rústico, leal y protector.",
 };
 
 
 const BichonFrise={
-    imgs : ["/img/bichonfrise.jpg"],
+    imgs : "img/3.jpg",
     nombre : "Bichon Frise",
     descripcion : "Amigable, alegre y de tamaño pequeño, perfecto para compañía en interiores.",
 };
 
 const ShihTzu={
-    imgs : ["/img/mediano/26.jpg"],
+    imgs : "img/4.jpg",
     nombre : "Shih Tzu",
     descripcion : "Encantador, alerta y afectuoso.",
 };
 
 const TerrierAleman={
-    imgs : ["/img/mediano/28.jpg"],
+    imgs : "/img/5.jpg",
     nombre : "Terrir Aleman",
     descripcion : "Valiente, inteligente y lleno de energía.",
 };
 
 
 const CavalierKing={
-    imgs : ["/img/cavalierking.jpeg"],
+    imgs : "img/6.jpeg",
     nombre : "Cavalier King Charles Spaniel",
     descripcion : "Gentil, sociable y adaptable, ideal para familias y espacios reducidos.",
 }
 const LabradorRetriever={
-    imgs :["/img/mediano/11.jpg",
-    "/img/mediano/13.jpg",
-    "img/pequeño/15.webp",
-    "img/pequeño/19.jpeg",
-    "img/pequeño/20.jpg",
-    "img/pequeño/30.png",
-    "img/mediano/36.png"],
+    imgs :"img/7.jpg",
     nombre : "Labrador Retriever",
     descripcion : "Amigable, inteligente y activo, adecuado para familias y estilos de vida activos.",
 };
 
 
 const GoldenRetriever={
-    imgs : ["/img/goldenretr.jpeg"],
+    imgs : "img/8.jpeg",
     nombre : "Golden Retriever",
     descripcion : "Amigable, inteligente y activo, adecuado para familias y estilos de vida activos.",
 };
 const LouisianaCatahoula={
-    imgs : ["/img/mediano/34.jpg"],
+    imgs : "img/9.jpg",
     nombre : "Louisiana Catahoula Leopard Dog",
     descripcion : "Enérgico, leal y con instintos de caza.",
 };
 const PlottHound={
-    imgs : ["/img/mediano/25.jpeg"],
+    imgs : "img/10.jpg",
     nombre : "Cavalier King Charles Spaniel",
     descripcion : "Gentil, sociable y adaptable, ideal para familias y espacios reducidos.",
 };
 
 
 const Beagle={
-    imgs : ["/img/beagle.jpg"],
+    imgs : "img/11.jpg",
     nombre : "Beagle",
     descripcion : "Curioso, enérgico y amigable, se adapta bien a una variedad de entornos familiares.",
 };
 const BlackMouthCur={
-    imgs : ["/img/pequeño/22.jpg",
-    "/img/pequeño/23.jpg",
-    "img/pequeño/27.jpg"],
+    imgs : "img/12.jpg",
     nombre : "Black Mouth Cur",
     descripcion : "Versátil, trabajador y cariñoso.",
 };
 const PatterdaleTerrier={
-    imgs : ["/img/grande/35.webp"],
+    imgs : "img/13.jpg",
     nombre : "Patterdale Terrier",
     descripcion : "Intrépido, robusto y lleno de energía.",
 };
 
 const BorderCollie={
-    imgs : ["/img/bordercoll.jpg"],
+    imgs : "img/14.jpg",
     nombre : "Border Collie",
     descripcion : " Inteligente, enérgico y altamente entrenable, perfecto para personas activas y amantes del aire libre.",
 };
 
 const BracoAleman={
-    imgs : ["/img/bracoAlem.jpg"],
+    imgs : "img/15.jpg",
     nombre : "Braco Aleman",
     descripcion : "Resistente, versátil y obediente",
 };
 const BulldogAmericano={
-    imgs : ["/img/bulldogAmer.jpeg"],
+    imgs : "img/16.jpeg",
     nombre : "Bulldog Americano",
     descripcion : "Fuerte, leal y protector.",
 };
 const DogoArgentino={
-    imgs : ["/img/dogoArg.webp"],
+    imgs : "img/17.webp",
     nombre : "Dogo Argentino",
     descripcion : "Valiente, leal y protector.",
 };
 
 
 const AustralianShepherd={
-    imgs : ["/img/australianShepherd.jpeg"],
+    imgs : "img/18.jpeg",
     nombre : "Australian Shepherd",
     descripcion : "Trabajador, leal y lleno de energía, necesita mucho ejercicio mental y físico.",
 };
 const PastorBelga={
-    imgs : ["/img/pastorBelgaMalinois.jpg"],
+    imgs : "img/19.jpg",
     nombre : "Pastor Belga",
     descripcion : "Inteligente, alerta y con gran resistencia.",
 };
 
 
 const Boxer={
-    imgs : ["/img/boxer.webp"],
+    imgs : "img/20.webp",
     nombre : "Boxer",
     descripcion : "Juguetón, protector y enérgico, ideal para familias activas y hogares con niños.",
 };
 const SpanielTibetano={
-    imgs : ["/img/spanielTibetano.jpg"],
+    imgs : "img/21.jpg",
     nombre : "Spaniel Tibetano",
     descripcion : "Alegre, leal y con una personalidad única.",
 };
 
 
 const PastorAleman={
-    imgs : ["/img/pastorAleman.jpeg"],
+    imgs : "img/22.jpeg",
     nombre : "Pastor Aleman",
     descripcion : "Inteligente, leal y atlético, adecuado para personas con experiencia en crianza de perros.",
 };
 
 const HuskySiberiano={
-    imgs : ["/img/huskySiberiano.webp"],
+    imgs : "img/23.webp",
     nombre : "Husky Siberiano",
     descripcion : "Independiente, enérgico y resistente, necesita mucho ejercicio y estimulación mental.",
 };
 const PitbullTerrier={
-    imgs : ["/img/mediano/12.jpg  "],
+    imgs : "img/24.jpg",
     nombre : "Pitbull Terrier Americano",
     descripcion : "Fuerte, valiente y leal",
 };
 
 
 const DobermanPinscher={
-    imgs : ["/img/dobermanPinscher.jpeg"],
+    imgs : "img/25.jpeg",
     nombre : "Doberman Pinscher",
     descripcion : " Valiente, leal y alerta, requiere una mano firme pero amorosa en el entrenamiento.",
 };
 
 const RatTerrier={
-    imgs : ["/img/ratTerrier.avif"],
+    imgs : "img/26.webp",
     nombre : "Rat Terrier",
     descripcion : "Activo, inteligente y lleno de energía.",
 };
 
 const PinscherAleman={
-    imgs : ["/img/pinscherAleman.webp"],
+    imgs : "img/27.webp",
     nombre : "Pinscher Aleman",
     descripcion : "Valiente, alerta y lleno de energía.",
 };
 
-rango1=[BulldogFrances, PastorDeKarst];
-rango2=[BichonFrise, ShihTzu, TerrierAleman];
-rango3=[CavalierKing, LabradorRetriever];
-rango4=[GoldenRetriever, LouisianaCatahoula, PlottHound];
-rango5=[Beagle, BlackMouthCur, PatterdaleTerrier];
-rango6=[BorderCollie];
-rango7=[BracoAleman, BulldogAmericano, DogoArgentino];
-rango8=[AustralianShepherd, PastorBelga];
-rango9=[Boxer, SpanielTibetano];
-rango10=[PastorAleman];
-rango11=[HuskySiberiano, PitbullTerrier];
-rango12=[DobermanPinscher, RatTerrier, PinscherAleman];
+const rango1=[BulldogFrances, PastorDeKarst];
+const rango2=[BichonFrise, ShihTzu, TerrierAleman];
+const rango3=[CavalierKing, LabradorRetriever];
+const rango4=[GoldenRetriever, LouisianaCatahoula, PlottHound];
+const rango5=[Beagle, BlackMouthCur, PatterdaleTerrier];
+const rango6=[BorderCollie];
+const rango7=[BracoAleman, BulldogAmericano, DogoArgentino];
+const rango8=[AustralianShepherd, PastorBelga];
+const rango9=[Boxer, SpanielTibetano];
+const rango10=[PastorAleman];
+const rango11=[HuskySiberiano, PitbullTerrier];
+const rango12=[DobermanPinscher, RatTerrier, PinscherAleman];
+//MOSTRAR PERROS COMPATIBLES
+const perro2 = {
+    nombre: "Thomas",
+    sexo: "Macho",
+    tamano: "Mediano",
+    edad: "5 años",
+    src: "adop/2.png"
+};
+const perro26 = {
+    nombre: "Clint",
+    sexo: "Macho",
+    tamano: "Pequeño",
+    edad: "4 años",
+    src: "adop/26.png"
+};
+const perro28 = {
+    nombre: "Leo",
+    sexo: "Macho",
+    tamano: "Mediano",
+    edad: "5 años",
+    src: "adop/28.png"
+};
+const perro13 = {
+    nombre: "Bono",
+    sexo: "Macho",
+    tamano: "Grande",
+    edad: "4.5 años",
+    src: "adop/13.png"
+};
+const perro15 = {
+    nombre: "Max",
+    sexo: "Macho",
+    tamano: "Mediano",
+    edad: "6 años",
+    src: "adop/15.png"
+};
+const perro19 = {
+    nombre: "Alfie",
+    sexo: "Macho",
+    tamano: "Pequeño",
+    edad: "4 años",
+    src: "adop/19.png"
+};
+const perro20 = {
+    nombre: "Gringo",
+    sexo: "Macho",
+    tamano: "Grande",
+    edad: "4.5 años",
+    src: "adop/20.png"
+};
+const perro30 = {
+    nombre: "Tigre",
+    sexo: "Macho",
+    tamano: "Mediano",
+    edad: "3 años",
+    src: "adop/30.png"
+};
+const perro36 = {
+    nombre: "Romi",
+    sexo: "Hembra",
+    tamano: "Mediana",
+    edad: "4 años",
+    src: "adop/36.png"
+};
+const perro65 = {
+    nombre: "Lauro",
+    sexo: "Macho",
+    tamano: "Mediano",
+    edad: "3 años",
+    src: "adop/65.png"
+};
+const perro67 = {
+    nombre: "Toño",
+    sexo: "Macho",
+    tamano: "Mediano",
+    edad: "8 meses",
+    src: "adop/67.png"
+};
+const perro34 = {
+    nombre: "Carmelita",
+    sexo: "Hembra",
+    tamano: "Mediana",
+    edad: "4 años",
+    src: "adop/34.png"
+};
+const perro25 = {
+    nombre: "Tomasita",
+    sexo: "Hembra",
+    tamano: "Mediana",
+    edad: "3 años",
+    src: "adop/25.png"
+};
+const perro22 = {
+    nombre: "Brunito",
+    sexo: "Macho",
+    tamano: "Mediano",
+    edad: "4 años",
+    src: "adop/22.png"
+};
+const perro23 = {
+    nombre: "Bambi",
+    sexo: "Hembra",
+    tamano: "Mediana",
+    edad: "3 años",
+    src: "adop/23.png"
+};
+const perro27 = {
+    nombre: "Charlie",
+    sexo: "Macho",
+    tamano: "Mediano",
+    edad: "5 años",
+    src: "adop/27.png"
+};
+const perro35 = {
+    nombre: "Manu",
+    sexo: "Macho",
+    tamano: "Pequeño",
+    edad: "3 años",
+    src: "adop/35.png"
+};
+const perro11 = {
+    nombre: "Soco",
+    sexo: "Macho",
+    tamano: "Mediano",
+    edad: "7 años",
+    src: "adop/11.png"
+};
+const perro59 = {
+    nombre: "Faber",
+    sexo: "Macho",
+    tamano: "Grande",
+    edad: "3 años",
+    src: "adop/59.png"
+};
+const perro60 = {
+    nombre: "Fabi",
+    sexo: "Hembra",
+    tamano: "Grande",
+    edad: "3 años",
+    src: "adop/60.png"
+};
+const perro73 = {
+    nombre: "Lima",
+    sexo: "Hembra",
+    tamano: "Mediana",
+    edad: "3 años",
+    src: "adop/73.png"
+};
+const perro51 = {
+    nombre: "Tommy",
+    sexo: "Macho",
+    tamano: "Mediano",
+    edad: "1 año",
+    src: "adop/51.png"
+};
+const perro53 = {
+    nombre: "Jerry",
+    sexo: "Macho",
+    tamano: "Pequeño",
+    edad: "4.5 años",
+    src: "adop/53.png"
+};
+const perro12 = {
+    nombre: "Bartolito",
+    sexo: "Macho",
+    tamano: "Grande",
+    edad: "4 años",
+    src: "adop/12.png"
+};
+const perro75 = {
+    nombre: "Tina",
+    sexo: "Hembra",
+    tamano: "Pequeña",
+    edad: "3 años",
+    src: "adop/75.png"
+};
+const perro69 = {
+    nombre: "Luna",
+    sexo: "Hembra",
+    tamano: "Mediana",
+    edad: "7 meses",
+    src: "adop/69.png"
+};
+const prango1=[perro2];
+const prango2=[perro26,perro28];
+const prango3=[perro13, perro15, perro19, perro20, perro30, perro36, perro65, perro67];
+const prango4=[perro25,perro34];
+const prango5=[perro22, perro27,perro35];
+const prango6=[perro11];
+const prango7=[perro59,perro60,perro73];
+const prango8=[perro51];
+const prango9=[perro53];
+const prango10=[perro23];
+const prango11=[perro12];
+const prango12=[perro75,perro69];

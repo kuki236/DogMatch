@@ -3,8 +3,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 150vh;
-    margin: 0;
+    margin-top: 3%;
     background-color: #f4f4f4;
 }
 
@@ -14,7 +13,10 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
+.tituloCompatibles{
+    text-align: center;
+    font-family: "Oswald", sans-serif;
+}
 h2 {
     text-align: center;
 }
@@ -31,22 +33,34 @@ h2 {
     padding-right: 5px; 
     padding-bottom: 5px;
 }
-
-
-
-.perro-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 150px; /* Ancho máximo para cada tarjeta */
-    padding: 10px;
-    border: 1px solid #ccc; /* Opcional: agregar un borde */
-    border-radius: 10px; /* Opcional: bordes redondeados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Opcional: sombra para el efecto de tarjeta */
-    background-color: #fff; /* Fondo blanco para las tarjetas */
+.divRazaCompatible{
+    text-align: center;
 }
-
-
-
-
-
+.botonMostrar{
+    margin-left: 10rem;
+}
+#rowPerros{
+    margin-top: 5%;
+    text-align: center;
+}
+.nombrePerro{
+    font-family: "Oswald", sans-serif;
+}
+.sexoPerro{
+    font-family: "Kanit", sans-serif;
+}
+.edadPerro{
+    font-family: "Josefin Sans", sans-serif;
+}
+.tamanoPerro{
+    font-family: "Lora", serif;
+}
+.cartaPerro{
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.cartaPerro:hover {
+    cursor: pointer;
+    background-color: #042940;
+    color: whitesmoke;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
