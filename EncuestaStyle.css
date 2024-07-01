@@ -1,24 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap');
+
 body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-top: 3%;
-    background-color: #f4f4f4;
+    align-items: flex-start; 
+    margin-top: 5%;
+    background-color: #28a745;
 }
 
 .contenedor {
-    background: white;
+    width: 70%; 
+    border: 2px solid #000000;
+    overflow: hidden; 
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
-.tituloCompatibles{
+
+.tituloCompatibles {
     text-align: center;
     font-family: "Oswald", sans-serif;
+    font-size: 7.5rem;
+    color: #ffffff;
 }
+
+.boton-respuesta {
+    margin-top: 3%;
+    margin-right: 6px;
+}
+
 h2 {
     text-align: center;
+    color: #28a745; 
+    font-size: 75px;
+}
+
+p {
+    font-size: 1.17em; 
+    font-weight: bold; 
 }
 
 .oculto {
@@ -28,36 +49,86 @@ h2 {
 .imagen-perro {
     width: 150px; 
     height: 150px; 
-    object-fit: cover; /* Ajuste de la imagen */
-    border-radius: 5px; /* Borde redondeado */
-    padding-right: 5px; 
+    object-fit: cover; 
+    border-radius: 5px;
+    padding-right: 5px;
     padding-bottom: 5px;
 }
-.divRazaCompatible{
+
+.divRazaCompatible {
     text-align: center;
 }
-.botonMostrar{
-    margin-left: 10rem;
+
+#boton-comenzar {
+    margin-left: 1%;
+    margin-top: 25px;
+    background-color: #28a745; 
+    color: #fff; 
+    border: none; 
+    padding: 20px 40px; 
+    font-size: 25px; 
+    cursor: pointer; 
+    border-radius: 5px; 
 }
-#rowPerros{
-    margin-top: 5%;
+
+#boton-comenzar:hover {
+    background-color: #218838;
+}
+
+#imgInicio {
+    width: 75%;
+    object-fit: cover; 
+    border-radius: 5px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+}
+
+.botonMostrar {
+    margin-left: 35%;
+    background-color: #28a745; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.botonMostrar:hover {
+    background-color: #218838;
+}
+
+#rowPerros {
+    margin-top: 3%;
     text-align: center;
+    justify-content: center;
 }
-.nombrePerro{
+
+.nombrePerro {
     font-family: "Oswald", sans-serif;
 }
-.sexoPerro{
+
+.sexoPerro {
     font-family: "Kanit", sans-serif;
 }
-.edadPerro{
+
+.edadPerro {
     font-family: "Josefin Sans", sans-serif;
 }
-.tamanoPerro{
+
+.tamanoPerro {
     font-family: "Lora", serif;
 }
-.cartaPerro{
+
+.cartaPerro {
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    padding: 15px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
+
 .cartaPerro:hover {
     cursor: pointer;
     background-color: #042940;
