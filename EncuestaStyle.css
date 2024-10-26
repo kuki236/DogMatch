@@ -18,6 +18,23 @@ body {
     padding: 20px;
     border-radius: 10px;
 }
+@media screen and (max-width:720px) {
+
+    .contenedor{
+        width:85%;
+        font-size: 1rem;
+        margin-top: 30%;
+    }
+    .bienvenido {
+        font-size: 3rem;
+    }
+    .razasCompatibles{
+        font-size: 2rem;
+    }
+    #botonMostrar{
+        margin-left: 10%;
+    }
+    }
 
 .tituloCompatibles {
     text-align: center;
